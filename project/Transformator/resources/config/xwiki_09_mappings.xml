@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Mappings>
+	<Mapping>
+		<Encoding>bold</Encoding>
+		<Interpreter>XWikiBoldTextInterpreterV09</Interpreter>
+	</Mapping>
+	<Mapping>
+		<Encoding>heading</Encoding>
+		<Interpreter>XWikiHeadingInterpreterV09</Interpreter>
+	</Mapping>
+	<Mapping>
+		<Encoding>html</Encoding>
+		<Interpreter>XWikiHtmlInterpreterV09</Interpreter>
+	</Mapping>
+	<Mapping>
+		<Encoding>italic</Encoding>
+		<Interpreter>XWikiItalicTextInterpreterV09</Interpreter>
+	</Mapping>
+	<Mapping>
+		<Encoding>underline</Encoding>
+		<Interpreter>XWikiUnderlineTextInterpreterV09</Interpreter>
+	</Mapping>
+</Mappings>
