@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiUppercaseGreekListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String UPPERCASE_GREEK_LIST_INTERPRETER_PATTERN 	= "^G.([\\p{Graph}\\p{Space}]*?)$";
-	private static final String UPPERCASE_GREEK_LIST_DECODING_PATTERN 		= "<greekUpList>([^\\p{Space}](?:[^<\\/]*+)*?)</greekUpList>";
-	
-	private static final String UPPERCASE_GREEK_LIST_ENCODING_FORM 			= "<greekUpList>#TEXT#</greekUpList>";
-	private static final String UPPERCASE_GREEK_LIST_DECODING_FORM			= "G. #TEXT#";
-
 	public XWikiUppercaseGreekListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = UPPERCASE_GREEK_LIST_ENCODING_FORM;
-		this.decodingTag = UPPERCASE_GREEK_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.UPPERCASE_GREEK_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.UPPERCASE_GREEK_LIST_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(UPPERCASE_GREEK_LIST_INTERPRETER_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.UPPERCASE_GREEK_LIST_INTERPRETER_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -37,7 +35,7 @@ public class XWikiUppercaseGreekListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(UPPERCASE_GREEK_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.UPPERCASE_GREEK_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

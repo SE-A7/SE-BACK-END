@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiKatakanaIrohaListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String KATAKANA_IROHA_LIST_PATTERN 			= "^K.([\\p{Graph}\\p{Space}]*?)$";
-	private static final String KATAKANA_IROHA_LIST_DECODING_PATTERN 	= "<katakanaIrohaList>([^\\p{Space}](?:[^<\\/]*+)*?)</katakanaIrohaList>";
-	
-	private static final String KATAKANA_IROHA_LIST_ENCODING_FORM 		= "<katakanaIrohaList>#TEXT#</katakanaIrohaList>";
-	private static final String KATAKANA_IROHA_LIST_DECODING_FORM		= "K. #TEXT#";
-
 	public XWikiKatakanaIrohaListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = KATAKANA_IROHA_LIST_ENCODING_FORM;
-		this.decodingTag = KATAKANA_IROHA_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.KATAKANA_IROHA_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.KATAKANA_IROHA_LIST_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(KATAKANA_IROHA_LIST_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.KATAKANA_IROHA_LIST_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -37,7 +35,7 @@ public class XWikiKatakanaIrohaListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(KATAKANA_IROHA_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.BULLETED_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

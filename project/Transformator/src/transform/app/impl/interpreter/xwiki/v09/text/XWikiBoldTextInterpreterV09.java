@@ -3,28 +3,26 @@ package transform.app.impl.interpreter.xwiki.v09.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiBoldTextInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String BOLD_TEXT_PATTERN 		= "(?<!\\*)\\*([^\\p{Space}\\*](?:[^*]*+)*?)\\*(?!\\*)";
-	private static final String BOLD_DECODING_PATTERN	= "<bold>([^\\p{Space}](?:[^<\\/]*+)*?)</bold>";
-	
-	private static final String BOLD_ENCODING_FORM		= "<bold>#TEXT#</bold>";
-	private static final String BOLD_DECODING_FORM		= "*#TEXT#*";
-	
 	public XWikiBoldTextInterpreterV09() 
 	{
 		super();
-		this.encodingTag = BOLD_ENCODING_FORM;
-		this.decodingTag = BOLD_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.BOLD_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.BOLD_DECODING_FORM.getPattern();
 	}
 	
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern pattern = Pattern.compile(BOLD_TEXT_PATTERN);
+		Pattern pattern = Pattern.compile(KnownEncodingPatterns.BOLD_TEXT_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())
@@ -38,7 +36,7 @@ public class XWikiBoldTextInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern pattern = Pattern.compile(BOLD_DECODING_PATTERN);
+		Pattern pattern = Pattern.compile(KnownDecodingPatterns.BOLD_DECODING_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())

@@ -17,7 +17,8 @@ public enum KnownFileNames
 		this.fileName = fileName;
 	}
 	
-	public String getFileName() {
+	public String getFileName() 
+	{
 		return fileName;
 	}
 }

@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiUnderlineTextInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String UNDERLINE_TEXT_PATTERN 		= "(?<!_)_{2}([\\p{Space}\\p{Graph}]*?)_{3}(?!_+)";
-	private static final String UNDERLINE_DECODE_PATTERN 	= "<underline>([^\\p{Space}](?:[^<\\/]*+)*?)</underline>"; 
-	
-	private static final String UNDERLINE_ENCODING_FORM		= "<underline>#TEXT#</underline>";
-	private static final String UNDERLINE_DECODING_FORM		= "__#TEXT#___";
-	
 	public XWikiUnderlineTextInterpreterV09() 
 	{
 		super();
-		this.encodingTag = UNDERLINE_ENCODING_FORM;
-		this.decodingTag = UNDERLINE_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.UNDERLINE_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.UNDERLINE_DECODING_FORM.getPattern();
 	}
 
 	@Override
 	public String encode(String content) 
 	{
-		Pattern pattern = Pattern.compile(UNDERLINE_TEXT_PATTERN);
+		Pattern pattern = Pattern.compile(KnownEncodingPatterns.UNDERLINE_TEXT_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())
@@ -37,7 +35,7 @@ public class XWikiUnderlineTextInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern pattern = Pattern.compile(UNDERLINE_DECODE_PATTERN);
+		Pattern pattern = Pattern.compile(KnownDecodingPatterns.UNDERLINE_DECODING_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())

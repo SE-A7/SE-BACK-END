@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiLowercaseGreekListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String LOWERCASE_GREEK_LIST_INTERPRETER_PATTERN 	= "^g.([\\p{Graph}\\p{Space}]*?)$";
-	private static final String LOWERCASE_GREEK_LIST_DECODING_PATTERN 		= "<greekLowList>([^\\p{Space}](?:[^<\\/]*+)*?)</greekLowList>";
-	
-	private static final String LOWERCASE_GREEK_LIST_ENCODING_FORM 			= "<greekLowList>#TEXT#</greekLowList>";
-	private static final String LOWERCASE_GREEK_LIST_DECODING_FORM			= "g. #TEXT#";
-
 	public XWikiLowercaseGreekListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = LOWERCASE_GREEK_LIST_ENCODING_FORM;
-		this.decodingTag = LOWERCASE_GREEK_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.LOWERCASE_GREEK_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.LOWERCASE_GREEK_LIST_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(LOWERCASE_GREEK_LIST_INTERPRETER_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.LOWERCASE_GREEK_LIST_INTERPRETER_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -37,7 +35,7 @@ public class XWikiLowercaseGreekListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(LOWERCASE_GREEK_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.LOWERCASE_GREEK_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

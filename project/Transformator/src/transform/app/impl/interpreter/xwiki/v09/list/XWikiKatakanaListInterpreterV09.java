@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiKatakanaListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String KATAKANA_LIST_PATTERN 				= "^k.([\\p{Graph}\\p{Space}]*?)$";
-	private static final String KATAKANA_LIST_DECODING_PATTERN 		= "<katakanaList>([^\\p{Space}](?:[^<\\/]*+)*?)</katakanaList>";
-	
-	private static final String KATAKANA_LIST_ENCODING_FORM 		= "<katakanaList>#TEXT#</katakanaList>";
-	private static final String KATAKANA_LIST_DECODING_FORM			= "k. #TEXT#";
-	
 	public XWikiKatakanaListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = KATAKANA_LIST_ENCODING_FORM;
-		this.decodingTag = KATAKANA_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.KATAKANA_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.KATAKANA_IROHA_LIST_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(KATAKANA_LIST_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.KATAKANA_LIST_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -37,7 +35,7 @@ public class XWikiKatakanaListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(KATAKANA_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.KATAKANA_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

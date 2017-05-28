@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiLinkInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String LINK_INTEPRETER_PATTERN = "\\[(.+?)\\]";
-	private static final String LINK_DECODING_PATTERN	= "";
-	
-	private static final String LINK_ENCODING_FORM		= "<link name=\"#NAME\" wikiAlias=\"#ALIAS#\" target=\"#TARGET\">#TEXT#</link>";
-	private static final String LINK_DECODING_FORM		= "[#NAME#>#TEXT#@#ALIAS#>#TARGET#]";
-
 	public XWikiLinkInterpreterV09() 
 	{
 		super();
-		this.encodingTag = LINK_ENCODING_FORM;
-		this.decodingTag = LINK_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.LINK_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.LINK_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern = Pattern.compile(LINK_INTEPRETER_PATTERN);
+		Pattern encodingPattern = Pattern.compile(KnownEncodingPatterns.LINK_INTEPRETER_PATTERN.getPattern());
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -87,7 +85,7 @@ public class XWikiLinkInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(LINK_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.LINK_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

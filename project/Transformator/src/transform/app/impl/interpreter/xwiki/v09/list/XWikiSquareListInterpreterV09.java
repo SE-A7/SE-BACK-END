@@ -3,27 +3,25 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiSquareListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String SQUARE_LIST_PATTERN 			= "^-([\\p{Graph}\\p{Space}]*?)$";
-	private static final String SQUARE_LIST_DECODING_PATTERN 	= "<squareList>([^\\p{Space}](?:[^<\\/]*+)*?)</squareList>";
-	
-	private static final String SQUARE_LIST_ENCODING_FORM 		= "<squareList>#TEXT#</squareList>";
-	private static final String SQUARE_LIST_DECODING_FORM 		= "- #TEXT#";
-	
 	public XWikiSquareListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = SQUARE_LIST_ENCODING_FORM;
-		this.decodingTag = SQUARE_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.SQUARE_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.SQUARE_LIST_DECODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(SQUARE_LIST_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.SQUARE_LIST_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -37,7 +35,7 @@ public class XWikiSquareListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(SQUARE_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.SQUARE_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())

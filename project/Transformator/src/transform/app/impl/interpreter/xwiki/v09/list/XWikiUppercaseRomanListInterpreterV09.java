@@ -3,28 +3,26 @@ package transform.app.impl.interpreter.xwiki.v09.list;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v09.enums.KnownEncodingPatterns;
 
 public class XWikiUppercaseRomanListInterpreterV09 extends AbstractInterpreter 
 {
-	private static final String UPPERCASE_ROMAN_LIST_INTERPRETER_PATTERN 	= "^I.([\\p{Graph}\\p{Space}]*?)$";
-	private static final String UPPERCASE_ROMAN_LIST_DECODING_PATTERN 		= "<romanUpList>([^\\p{Space}](?:[^<\\/]*+)*?)</romanUpList>";
-	
-	private static final String UPPERCASE_ROMAN_LIST_ENCODING_FORM 			= "<romanUpList>#TEXT#</romanUpList>";
-	private static final String UPPERCASE_ROMAN_LIST_DECODING_FORM			= "I. #TEXT#";
-
 	public XWikiUppercaseRomanListInterpreterV09() 
 	{
 		super();
-		this.encodingTag = UPPERCASE_ROMAN_LIST_ENCODING_FORM;
-		this.decodingTag = UPPERCASE_ROMAN_LIST_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.UPPERCASE_ROMAN_LIST_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.UPPERCASE_ROMAN_LIST_DECODING_FORM.getPattern();
 	}
 	
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingPattern	= Pattern.compile(UPPERCASE_ROMAN_LIST_INTERPRETER_PATTERN,Pattern.MULTILINE);
+		Pattern encodingPattern	= Pattern.compile(KnownEncodingPatterns.UPPERCASE_ROMAN_LIST_INTERPRETER_PATTERN.getPattern(),Pattern.MULTILINE);
 		Matcher encodingMatcher = encodingPattern.matcher(content);
 		
 		while(encodingMatcher.find())
@@ -38,7 +36,7 @@ public class XWikiUppercaseRomanListInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(UPPERCASE_ROMAN_LIST_DECODING_PATTERN);
+		Pattern decodingPattern = Pattern.compile(KnownDecodingPatterns.UPPERCASE_ROMAN_LIST_DECODING_PATTERN.getPattern());
 		Matcher decodingMatcher = decodingPattern.matcher(content);
 		
 		while(decodingMatcher.find())
