@@ -17,7 +17,8 @@ public enum KnownPaths
 		this.path = path;
 	}
 	
-	public String path() {
+	public String path() 
+	{
 		return path;
 	}
 	

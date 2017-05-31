@@ -15,27 +15,12 @@ public class XWikiInterpreterFactoryV21 extends AbstractXWikiFactory
 	{
 		super();
 		this.version 		= XWikiVersion.XWIKI_VERSION_2_1;
-		this.configuration	= (Configuration) ConfigurationBuilder.newXmlConfigurationInstance(new File(KnownPaths.CONFIGURATION_RELATIVE_PATH + "/" + KnownFileNames.XWIKI_V21_CONFIG_FILE));
+		this.configuration	= (Configuration) ConfigurationBuilder.newXmlConfigurationInstance(new File(KnownPaths.CONFIGURATION_RELATIVE_PATH.path() + "/" + KnownFileNames.XWIKI_V21_CONFIG_FILE.getFileName()));
 	}
 	
 	
 	public static XWikiInterpreterFactoryV21 newInstance()
 	{
 		return new XWikiInterpreterFactoryV21();
-	}
-
-
-	@Override
-	protected void encode(String line) 
-	{
-		// TODO Interpret the code cases in Xwiki 2.1
-		
-	}
-
-
-	@Override
-	protected File getResultFile() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

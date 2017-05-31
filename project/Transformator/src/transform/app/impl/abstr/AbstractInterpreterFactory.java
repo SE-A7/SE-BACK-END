@@ -24,14 +24,14 @@ public class AbstractInterpreterFactory
 	/**
 	 * File which contains the code interpreted by the factory
 	 */
-	protected File interpretedCodeFile;
+	protected File interpretedCodeFile = new File("resources/translate/partialInterpretedFile.txt");
 	
 	/**
 	 * 	File which contains the final version of the interpreted code
 	 */
-	protected File resultFile;
+	protected File resultFile = new File("resources/translate/resultFile.txt");
 	
-	protected Logger log;
+	protected Logger log = Logger.getLogger(AbstractInterpreterFactory.class);
   
 	/**
 	 * This method return an <b>Interpreter</b> instance described by the tag parameter

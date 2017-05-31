@@ -3,35 +3,29 @@ package transform.app.impl.interpreter.xwiki.v21.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v21.enums.KnownEncodingPatterns;
 import transform.app.util.StringUtils;
 
 public class XWikiHeadingInterpreterV21 extends AbstractInterpreter 
 {
-	private static final String HEADING_LEVEL_PATTERN 		= "^(1(?:\\.)*)+";
-	private static final String HEADING_TEXT_PATTERN		= "^(1(?:\\.)*)+([\\p{Graph}\\p{Space}]*?)$";
-	private static final String HEADING_DECODING_PATTERN	= "<heading level=\\\"([1-6])\\\">([^\\p{Space}](?:[^<\\/]*+)*?)</heading>";
-	
-	private static final String HEADING_ENCODING_FORM		= "<heading level=\"#LEVEL#\">#TEXT#</heading>";
-
 	public XWikiHeadingInterpreterV21() 
 	{
 		super();
-		this.encodingTag = HEADING_ENCODING_FORM;
+		this.encodingTag = KnownEncodingForm.HEADING_ENCODING_FORM.getPattern();
 	}
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern headingLevelPattern = Pattern.compile(HEADING_LEVEL_PATTERN, Pattern.MULTILINE);
-		Matcher headingLevelMatcher = headingLevelPattern.matcher(content);
+		Pattern encodingHeadingPattern = Pattern.compile(KnownEncodingPatterns.HEADING_INTERPRETER_PATTERN.getPattern());
+		Matcher encodingHeadingMatcher = encodingHeadingPattern.matcher(content);
 		
-		Pattern headingTextPattern	= Pattern.compile(HEADING_TEXT_PATTERN, Pattern.MULTILINE);
-		Matcher headingTextMatcher 	= headingTextPattern.matcher(content);
-		
-		while(headingLevelMatcher.find() && headingTextMatcher.find())
+		while(encodingHeadingMatcher.find())
 		{
-			content 		= content.replace(headingTextMatcher.group(0), encodingTag.replace("#LEVEL#", Integer.toString(StringUtils.getNumberOfCounts("1", headingLevelMatcher.group(0))).replace("#TEXT#", headingTextMatcher.group(2).trim())));
+			content = content.replace(encodingHeadingMatcher.group(0), encodingTag.replace("#LEVEL#", Integer.toString(StringUtils.getNumberOfCounts("=", encodingHeadingMatcher.group(1).trim())).replace("#TEXT#", encodingHeadingMatcher.group(2).trim())));
 		}
 		
 		return content;
@@ -40,12 +34,12 @@ public class XWikiHeadingInterpreterV21 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern decodingPattern = Pattern.compile(HEADING_DECODING_PATTERN);
-		Matcher decodingMatcher = decodingPattern.matcher(content);
+		Pattern decodingHeadingPattern = Pattern.compile(KnownDecodingPatterns.HEADING_DECODING_PATTERN.getPattern());
+		Matcher decodingHeadingMatcher = decodingHeadingPattern.matcher(content);
 		
-		while(decodingMatcher.find())
+		while(decodingHeadingMatcher.find())
 		{
-			content = content.replace(decodingMatcher.group(0), StringUtils.getRepeatedString("1", Integer.parseInt(decodingMatcher.group(1).trim()), ".") + " " + decodingMatcher.group(2).trim());
+			content = content.replace(decodingHeadingMatcher.group(0), StringUtils.getRepeatedString("=", Integer.parseInt(decodingHeadingMatcher.group(1).trim()), "") + " " + decodingHeadingMatcher.group(2).trim() + " " + StringUtils.getRepeatedString("=", Integer.parseInt(decodingHeadingMatcher.group(1).trim()), ""));
 		}
 		
 		return content;

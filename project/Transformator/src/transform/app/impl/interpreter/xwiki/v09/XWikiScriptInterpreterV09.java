@@ -32,12 +32,12 @@ public class XWikiScriptInterpreterV09 extends AbstractInterpreter
 		
 		while(encodingVelocityScriptMatcher.find())
 		{
-			content = content.replace(encodingVelocityScriptMatcher.group(0), encodingTag.replace("#TYPE#", "velocity").replace("#TEXT#", encodingVelocityScriptMatcher.group(0)));
+			content = content.replace(encodingVelocityScriptMatcher.group(0), encodingTag.replace("#TYPE#", "velocity").replace("#TEXT#", encodingVelocityScriptMatcher.group(0).trim()));
 		}
 		
 		while(encodingGroovyScriptMatcher.find())
 		{
-			content = content.replace(encodingGroovyScriptMatcher.group(0), encodingTag.replace("#TYPE#", "groovy").replace("#TEXT#", encodingGroovyScriptMatcher.group(1)));
+			content = content.replace(encodingGroovyScriptMatcher.group(0), encodingTag.replace("#TYPE#", "groovy").replace("#TEXT#", encodingGroovyScriptMatcher.group(1).trim()));
 		}
 		
 		return content;
@@ -55,10 +55,10 @@ public class XWikiScriptInterpreterV09 extends AbstractInterpreter
 			switch(decodingScriptMatcher.group(1))
 			{
 				case "velocity":
-					content = content.replace(decodingScriptMatcher.group(0), decodingScriptMatcher.group(2));
+					content = content.replace(decodingScriptMatcher.group(0), decodingScriptMatcher.group(2).trim());
 					break;
 				case "groovy":
-					content = content.replace(decodingScriptMatcher.group(0), "<%" + System.lineSeparator() + decodingScriptMatcher.group(2) + System.lineSeparator() + "%>");
+					content = content.replace(decodingScriptMatcher.group(0), "<%" + System.lineSeparator() + decodingScriptMatcher.group(2).trim() + System.lineSeparator() + "%>");
 					break;
 				default:
 					log.error("The type of script is not recognized!");

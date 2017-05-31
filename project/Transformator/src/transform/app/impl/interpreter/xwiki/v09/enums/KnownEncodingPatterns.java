@@ -1,5 +1,10 @@
 package transform.app.impl.interpreter.xwiki.v09.enums;
 
+/**
+ * This enumeration contains all the specific regular expressions which matches XWiki 0.9 syntax
+ * @author Razvan
+ *
+ */
 public enum KnownEncodingPatterns 
 {
 	// Lists

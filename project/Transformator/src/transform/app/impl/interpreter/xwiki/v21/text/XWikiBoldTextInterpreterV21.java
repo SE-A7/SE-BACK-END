@@ -3,33 +3,31 @@ package transform.app.impl.interpreter.xwiki.v21.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import transform.app.enums.KnownDecodingPatterns;
+import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
+import transform.app.impl.interpreter.xwiki.v21.enums.KnownDecodingForm;
+import transform.app.impl.interpreter.xwiki.v21.enums.KnownEncodingPatterns;
 
 public class XWikiBoldTextInterpreterV21 extends AbstractInterpreter 
 {
-	private static final String BOLD_TEXT_PATTERN 		= "(?<!\\*)\\*([^\\p{Space}\\*](?:[^*]*+)*?)\\*(?!\\*)";
-	private static final String BOLD_DECODING_PATTERN	= "<bold>([^\\p{Space}](?:[^<\\/]*+)*?)</bold>";
-	
-	private static final String BOLD_ENCODING_FORM		= "<bold>#TEXT#</bold>";
-	private static final String BOLD_DECODING_FORM		= "*#TEXT#*";
-	
 	public XWikiBoldTextInterpreterV21() 
 	{
 		super();
-		this.encodingTag = BOLD_ENCODING_FORM;
-		this.decodingTag = BOLD_DECODING_FORM;
+		this.encodingTag = KnownEncodingForm.BOLD_ENCODING_FORM.getPattern();
+		this.decodingTag = KnownDecodingForm.BOLD_DECODING_FORM.getPattern();
 	}
 	
 	
 	@Override
 	public String encode(String content) 
 	{
-		Pattern pattern = Pattern.compile(BOLD_TEXT_PATTERN);
+		Pattern pattern = Pattern.compile(KnownEncodingPatterns.BOLD_TEXT_INTERPRETER_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())
 		{
-			content = content.replace(matcher.group(0),encodingTag.replace("#TEXT#", matcher.group(1)));
+			content = content.replace(matcher.group(0),encodingTag.replace("#TEXT#", matcher.group(2)));
 		}
 		
 		return content;
@@ -38,7 +36,7 @@ public class XWikiBoldTextInterpreterV21 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		Pattern pattern = Pattern.compile(BOLD_DECODING_PATTERN);
+		Pattern pattern = Pattern.compile(KnownDecodingPatterns.BOLD_DECODING_PATTERN.getPattern());
 		Matcher matcher = pattern.matcher(content);
 		
 		while(matcher.find())

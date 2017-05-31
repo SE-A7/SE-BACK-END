@@ -1,6 +1,7 @@
 package transform.app.impl.configuration;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -36,8 +37,11 @@ public class XMLConfiguration implements Configuration
 	 */
 	private XMLConfiguration(File xmlFile) 
 	{
-		this.xmlFile 	= xmlFile;
-		this.log		= Logger.getLogger(XMLConfiguration.class);
+		this.xmlFile 			= xmlFile;
+		this.log				= Logger.getLogger(XMLConfiguration.class);
+		this.stringToClassMap 	= new HashMap<>();	 
+		
+		build();
 	}
   
   

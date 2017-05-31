@@ -20,7 +20,7 @@ public class XWikiInterpreterFactoryV09 extends AbstractXWikiFactory
 		this.log			= Logger.getLogger(XWikiInterpreterFactoryV09.class);
 		this.version 		= XWikiVersion.XWIKI_VERSION_0_9;
 		
-		this.configuration 	= (Configuration)ConfigurationBuilder.newXmlConfigurationInstance(new File(KnownPaths.CONFIGURATION_RELATIVE_PATH.path() + "/" + KnownFileNames.XWIKI_V09_CONFIG_FILE)); 
+		this.configuration 	= (Configuration)ConfigurationBuilder.newXmlConfigurationInstance(new File(KnownPaths.CONFIGURATION_RELATIVE_PATH.path() + "/" + KnownFileNames.XWIKI_V09_CONFIG_FILE.getFileName())); 
 	}
 	
 	

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<translate>
+	<input language="xwiki" version="0.9" />
+	<output language="xwiki" version="2.1" />
+	<code>
+	This is a normal paragraph.
+	</code>
+</translate>

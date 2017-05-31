@@ -1,23 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Mappings>
+
+	<!-- Text mappings -->
 	<Mapping>
 		<Encoding>bold</Encoding>
-		<Interpreter>XWikiBoldTextInterpreterV09</Interpreter>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiBoldTextInterpreterV09</Interpreter>
+		<priority>0</priority>
 	</Mapping>
 	<Mapping>
 		<Encoding>heading</Encoding>
-		<Interpreter>XWikiHeadingInterpreterV09</Interpreter>
-	</Mapping>
-	<Mapping>
-		<Encoding>html</Encoding>
-		<Interpreter>XWikiHtmlInterpreterV09</Interpreter>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiHeadingInterpreterV09</Interpreter>
+		<priority>0</priority>
 	</Mapping>
 	<Mapping>
 		<Encoding>italic</Encoding>
-		<Interpreter>XWikiItalicTextInterpreterV09</Interpreter>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiItalicTextInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>strike</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiStrikeTextInterpreterV09</Interpreter>
+		<priority>0</priority>
 	</Mapping>
 	<Mapping>
 		<Encoding>underline</Encoding>
-		<Interpreter>XWikiUnderlineTextInterpreterV09</Interpreter>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiUnderlineTextInterpreterV09</Interpreter>
+		<priority>0</priority>
 	</Mapping>
+	
+	<!-- List mappings -->
+	<Mapping>
+		<Encoding>bulletList</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.list.XWikiBulletedListInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>numberedList</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.list.XWikiNumberedListInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>mixedList</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.text.XWikiMixedListInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	
+	
+	<!-- Other mappings -->
+	<Mapping>
+		<Encoding>horizontalLine</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiHorizontalLineInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>html</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiHtmlInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>lineBreak</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiLineBreakInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>link</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiLinkInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>macro</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiMacroInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	<Mapping>
+		<Encoding>script</Encoding>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v09.XWikiScriptInterpreterV09</Interpreter>
+		<priority>0</priority>
+	</Mapping>
+	
+	
 </Mappings>

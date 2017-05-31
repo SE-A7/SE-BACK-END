@@ -6,7 +6,7 @@ public class Mapping
 {
 	private String encoding;
 	private String interpreterClass;
-	
+	private String priority;
 	
 	
 	/*
@@ -22,6 +22,11 @@ public class Mapping
 		return interpreterClass;
 	}
 	
+	public String getPriority()
+	{
+		return priority;
+	}
+	
 	@XmlElement(name="Encoding")
 	public void setEncoding(String encoding) 
 	{
@@ -32,5 +37,11 @@ public class Mapping
 	public void setInterpreterClass(String interpreterClass) 
 	{
 		this.interpreterClass = interpreterClass;
-	}	
+	}
+	
+	@XmlElement(name="priority")
+	public void setPriority(String priority)
+	{
+		this.priority = priority;
+	}
 }

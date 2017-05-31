@@ -30,7 +30,7 @@ public class XmlTranslatorConfiguration extends AbstractTranslatorConfiguration
 			TranslateConfig config 	= JAXBUtils.getTranslateConfig(file);
 			fromTranslator 		   	= TranslatorBuilder.getTranslator(config.getInputLanguage().getLanguage(), config.getInputLanguage().getVersion());
 			toTranslator			= TranslatorBuilder.getTranslator(config.getOutputLanguage().getLanguage(), config.getOutputLanguage().getVersion());
-			codeToTranslate			= config.getCode();
+			codeToTranslate			= config.getCode().trim();
 			
 			if(fromTranslator == null)
 			{
