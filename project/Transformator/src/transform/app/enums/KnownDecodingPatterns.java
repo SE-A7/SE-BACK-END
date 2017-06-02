@@ -34,7 +34,7 @@ public enum KnownDecodingPatterns
 	UNDERLINE_DECODING_PATTERN	("<underline>([^\\p{Space}]*(?:[^<\\/]*+)*?)</underline>"),
 	
 	// HTML
-	HTML_DECODING_PATTERN		("<html>([^\\p{Space}]*(?:[^<\\/]*+)*?)</html>"),
+	HTML_DECODING_PATTERN		("<html>([\\p{Space}\\p{Graph}]*?)</html>"),
 	
 	// Other
 	LINK_DECODING_PATTERN		("<link name=\"([\\p{Graph}\\p{Space}]*?)\" wikiAlias=\"([\\p{Graph}\\p{Space}]*?)\" target=\"([\\p{Graph}\\p{Space}]*?)\">([\\p{Graph}\\p{Space}]*?)<\\/link>"),

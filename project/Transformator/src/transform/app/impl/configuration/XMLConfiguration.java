@@ -1,7 +1,9 @@
 package transform.app.impl.configuration;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -39,7 +41,7 @@ public class XMLConfiguration implements Configuration
 	{
 		this.xmlFile 			= xmlFile;
 		this.log				= Logger.getLogger(XMLConfiguration.class);
-		this.stringToClassMap 	= new HashMap<>();	 
+		this.stringToClassMap 	= new LinkedHashMap<>();	 
 		
 		build();
 	}
@@ -68,12 +70,20 @@ public class XMLConfiguration implements Configuration
 			Unmarshaller unmarshaller	= jaxbContext.createUnmarshaller();
 			Mappings mappings			= (Mappings) unmarshaller.unmarshal(xmlFile);
 			
+			// sort the mapping list from the highest priority to the lowest
+			Collections.sort(mappings.getMappings(), new Comparator<Mapping>() {
+				@Override
+				public int compare(Mapping o1, Mapping o2) 
+				{
+					return Integer.parseInt(o1.getPriority()) - Integer.parseInt(o2.getPriority());
+				}
+			});
+			Collections.reverse(mappings.getMappings());
 			
 			for (Mapping mapping : mappings.getMappings()) 
 			{
 				stringToClassMap.put(mapping.getEncoding(), (Interpreter)Class.forName(mapping.getInterpreterClass()).newInstance());
 			}
-		  
 		  
 			log.info("Map builded successfully.");
 		} 

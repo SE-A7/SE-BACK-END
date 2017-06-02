@@ -32,7 +32,7 @@ public class XWikiHtmlInterpreterV21 extends AbstractInterpreter
 		
 		while(decodingHTMLMatcher.find())
 		{
-			content = content.replace(decodingHTMLMatcher.group(0), decodingTag.replace("#TEXT#", decodingHTMLMatcher.group(1)));
+			content = content.replace("<html>","{{html}}").replace("</html>", "{{/html}}");
 		}
 		return content;
 	}

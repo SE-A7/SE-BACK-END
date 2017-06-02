@@ -30,7 +30,7 @@ public class TranslatorManager
 	 */
 	public void addXmlConfigurationFile(File xmlFile)
 	{
-		configuration = TranslatorConfigurationBuilder.getXmlTranslatorConfigurationInstance(xmlFile);
+		configuration = TranslatorConfigurationBuilder.getTranslatorConfigurationInstance(xmlFile,"xml");
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class TranslatorManager
 	 */
 	public void addTextConfigurationFile(File textFile)
 	{
-		log.error("This method is not supported yet!");
+		configuration = TranslatorConfigurationBuilder.getTranslatorConfigurationInstance(textFile,"text");
 	}
 	
 	/**

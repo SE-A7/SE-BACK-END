@@ -19,20 +19,20 @@ public class XWikiHtmlInterpreterV09 extends AbstractInterpreter
 	@Override
 	public String encode(String content) 
 	{
-		Pattern encodingHTMLMultilinePattern = Pattern.compile(KnownEncodingPatterns.HTML_MULTILINE_INTERPRETER_PATTERN.getPattern());
-		Matcher encodingHTMLMultilineMatcher = encodingHTMLMultilinePattern.matcher(content);
+		Pattern encodingHTMLMultiTagPattern = Pattern.compile(KnownEncodingPatterns.HTML_MULTITAG_INTERPRETER_PATTERN.getPattern());
+		Matcher encodingHTMLMultiTagMatcher = encodingHTMLMultiTagPattern.matcher(content);
 		
-		Pattern encodingHTMLSinglelinePattern = Pattern.compile(KnownEncodingPatterns.HTML_SINGLELINE_INTERPRETER_PATTERN.getPattern());
-		Matcher encodingHTMLSinglelineMatcher = encodingHTMLSinglelinePattern.matcher(content);
+		Pattern encodingHTMLSingleTagPattern = Pattern.compile(KnownEncodingPatterns.HTML_SINGLETAG_INTERPRETER_PATTERN.getPattern());
+		Matcher encodingHTMLSingleTagMatcher = encodingHTMLSingleTagPattern.matcher(content);
 		
-		while(encodingHTMLMultilineMatcher.find())
+		while(encodingHTMLMultiTagMatcher.find())
 		{
-			content = content.replace(encodingHTMLMultilineMatcher.group(0), encodingTag.replace("#TEXT#", encodingHTMLMultilineMatcher.group(0)));
+			content = content.replace(encodingHTMLMultiTagMatcher.group(0), encodingTag.replace("#TEXT#", encodingHTMLMultiTagMatcher.group(0)));
 		}
 		
-		while(encodingHTMLSinglelineMatcher.find())
+		while(encodingHTMLSingleTagMatcher.find())
 		{
-			content = content.replace(encodingHTMLSinglelineMatcher.group(0), encodingTag.replace("#TEXT#", encodingHTMLSinglelineMatcher.group(0)));
+			content = content.replace(encodingHTMLSingleTagMatcher.group(0), encodingTag.replace("#TEXT#", encodingHTMLSingleTagMatcher.group(0)));
 		}
 		
 		return content;

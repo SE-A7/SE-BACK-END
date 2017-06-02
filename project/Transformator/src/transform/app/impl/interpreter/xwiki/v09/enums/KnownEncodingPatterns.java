@@ -40,8 +40,8 @@ public enum KnownEncodingPatterns
 	LINK_INTEPRETER_PATTERN				("\\[(.+?)\\]"),
 	
 	// HTML
-	HTML_MULTILINE_INTERPRETER_PATTERN	("<([\\p{Alnum}]*)[^>]*>(?:[\\p{Graph}\\p{Space}]*?)<\\/\\1>"),
-	HTML_SINGLELINE_INTERPRETER_PATTERN	("<([\\p{Alnum}]*)[^>]*\\/>"),
+	HTML_MULTITAG_INTERPRETER_PATTERN	("<([\\p{Alnum}]*)[^>]*>(?:[\\p{Graph}\\p{Space}]*?)<\\/\\1>"),
+	HTML_SINGLETAG_INTERPRETER_PATTERN	("<([\\p{Alnum}]*)[^>]*\\/>"),
 	
 	// Macros
 	VELOCITY_MACRO_INTERPRETER_PATTERN	("^#([\\p{Alnum}]*)\\((.*?)\\)$"),
