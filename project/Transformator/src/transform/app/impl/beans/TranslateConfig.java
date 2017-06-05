@@ -1,5 +1,6 @@
 package transform.app.impl.beans;
 
+import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,7 +40,7 @@ public class TranslateConfig
 		this.outputLanguage = outputLanguage;
 	}
 	
-	@XmlElement(name = "code")
+	@XmlAnyElement(CodeHandler.class)
 	public void setCode(String code) 
 	{
 		this.code = code;

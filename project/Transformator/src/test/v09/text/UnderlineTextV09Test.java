@@ -18,10 +18,10 @@ public class UnderlineTextV09Test
 	public void testEncode() 
 	{
 		XWikiUnderlineTextInterpreterV09 interpreter = new XWikiUnderlineTextInterpreterV09();
-		String content = "__this is a underlined text___";
+		String content = "Not underline, but __this is a underlined text___";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<underline>this is a underlined text</underline>", encoded);
+		assertEquals("Not underline, but <underline>this is a underlined text</underline>", encoded);
 	}
 	
 	/**
@@ -31,10 +31,10 @@ public class UnderlineTextV09Test
 	public void testDecode()
 	{
 		XWikiUnderlineTextInterpreterV09 interpreter = new XWikiUnderlineTextInterpreterV09();
-		String content = "<underline>this is a underline text</underline>";
+		String content = "Not underline, but <underline>this is a underlined text</underline>";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("__this is a underlined text___", decoded);
+		assertEquals("Not underline, but __this is a underlined text___", decoded);
 	}
 
 }

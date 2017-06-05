@@ -53,9 +53,10 @@ public class HTMLV09Test
 	private void testEncode_SingleTagHTML() 
 	{
 		XWikiHtmlInterpreterV09 interpreter = new XWikiHtmlInterpreterV09();
-        String content = "<br /> <hr/>";
+        String content = "<br /> <hr />";
         String encoded = interpreter.encode(content);
-        assertEquals("<html>"+ System.lineSeparator() + "<br/> <hr />" + System.lineSeparator() + "</html>", encoded);
+        assertEquals("<html>"+ System.lineSeparator() + "<br />" + System.lineSeparator() + "</html>" + " " + 
+        		"<html>"+ System.lineSeparator() + "<hr />" + System.lineSeparator() + "</html>", encoded);
 		
 	}
 	
@@ -86,7 +87,7 @@ public class HTMLV09Test
 	private void testDecode_SingleTagHTML() 
 	{
 		XWikiHtmlInterpreterV09 interpreter = new XWikiHtmlInterpreterV09();
-        String content = "<html>"+ System.lineSeparator() + "<br/> <hr />" + System.lineSeparator() + "</html>";
+        String content = "<html>"+ System.lineSeparator() + "<br /> <hr />" + System.lineSeparator() + "</html>";
         String decoded = interpreter.decode(content);
         assertEquals("<br /> <hr />", decoded);
 		

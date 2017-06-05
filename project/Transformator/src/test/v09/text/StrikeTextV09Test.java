@@ -16,10 +16,10 @@ public class StrikeTextV09Test
 	public void testEncode() 
 	{
 		XWikiStrikeTextInterpreterV09 interpreter = new XWikiStrikeTextInterpreterV09();
-		String content = "--this is a strike text--";
+		String content = "Not strike, but --this is a strike text--";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<strike>this is a strike text</strike>", encoded);
+		assertEquals("Not strike, but <strike>this is a strike text</strike>", encoded);
 	}
 	
 	/**
@@ -29,10 +29,10 @@ public class StrikeTextV09Test
 	public void testDecode()
 	{
 		XWikiStrikeTextInterpreterV09 interpreter = new XWikiStrikeTextInterpreterV09();
-		String content = "<strike>this is a strike text</strike>";
+		String content = "Not strike, but <strike>this is a strike text</strike>";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("--this is a strike text--", decoded);
+		assertEquals("Not strike, but --this is a strike text--", decoded);
 	}
 
 }

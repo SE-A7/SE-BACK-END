@@ -16,16 +16,13 @@ public class NumberedListV21Test
     public void testEncode()
     {
     	XWikiNumberedListInterpreterV21 interpreter = new XWikiNumberedListInterpreterV21();
-        String content =
-                "1. list item 1\n" +
-                "1.list item 2\n";
-        interpreter.encode(content);
-
-        assertEquals(
-                "<list style=\"numbered\">\n" +
-                "    <listItem>list item 1</listItem>\n" +
-                "    <listItem>list item 2</listItem>\n" +
-                "</list>\n", content);
+    	String content = "1. this is item 1" + System.lineSeparator() + "11. this is item 2" + System.lineSeparator() + "1. this is item 3" + System.lineSeparator() + "111. this is item 4";
+		String encoded = interpreter.encode(content);
+		
+		assertEquals("<numberList depth=\"1\">this is item 1</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"2\">this is item 2</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"1\">this is item 3</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"3\">this is item 4</numberList>", encoded);
     }
 
     /**
@@ -35,16 +32,13 @@ public class NumberedListV21Test
     public void testDecode()
     {
     	XWikiNumberedListInterpreterV21 interpreter = new XWikiNumberedListInterpreterV21();
-        String content =
-                "<list style=\"numbered\">\n" +
-                "    <listItem>list item 1</listItem>\n" +
-                "    <listItem>list item 2</listItem>\n" +
-                "</list>\n";
-        interpreter.decode(content);
-
-        assertEquals(
-                "1.list item 1\n" +
-                "1.list item 2\n", content);
+    	String content = "<numberList depth=\"1\">this is item 1</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"2\">this is item 2</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"1\">this is item 3</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"3\">this is item 4</numberList>";
+		String decoded = interpreter.decode(content);
+		
+		assertEquals("1. this is item 1" + System.lineSeparator() + "11. this is item 2" + System.lineSeparator() + "1. this is item 3" + System.lineSeparator() + "111. this is item 4", decoded);
     }
 
 }

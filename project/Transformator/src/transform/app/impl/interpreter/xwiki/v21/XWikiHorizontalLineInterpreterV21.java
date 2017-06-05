@@ -1,11 +1,23 @@
 package transform.app.impl.interpreter.xwiki.v21;
 
+import org.apache.log4j.Logger;
+
 import transform.app.enums.KnownEncodingForm;
 import transform.app.impl.abstr.AbstractInterpreter;
 import transform.app.impl.interpreter.xwiki.v21.enums.KnownDecodingForm;
 
+/**
+ * Interpreter for horizontal line in XWiki 2.1
+ * @author Razvan
+ *
+ */
 public class XWikiHorizontalLineInterpreterV21 extends AbstractInterpreter 
 {
+	/**
+	 *  The logger for the class {@link XWikiHorizontalLineInterpreterV21}
+	 */
+	private static final Logger log = Logger.getLogger(XWikiHorizontalLineInterpreterV21.class);
+	
 	public XWikiHorizontalLineInterpreterV21() 
 	{
 		super();
@@ -22,6 +34,9 @@ public class XWikiHorizontalLineInterpreterV21 extends AbstractInterpreter
 	@Override
 	public String decode(String content) 
 	{
-		return content.replaceAll(encodingTag, decodingTag);
+		log.info("Start to decode the horizontal lines into XWiki 2.1 syntax ...");
+		content = content.replace(encodingTag, decodingTag);
+		log.info("Decoding the horizontal lines finished.");
+		return content;
 	}
 }

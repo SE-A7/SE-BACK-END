@@ -9,18 +9,18 @@ import transform.app.impl.interpreter.xwiki.v21.text.XWikiItalicTextInterpreterV
 public class ItalicTextV21Test 
 {
 
-	/**
-	 *  Test interpreter italic text encoding.
-	 */
-	@Test
-	public void testEncode() 
-	{
-		XWikiItalicTextInterpreterV21 interpreter = new XWikiItalicTextInterpreterV21();
-		String content = "//italic text test//";
-		String encoded = interpreter.encode(content);
-		
-		assertEquals("<italic>italic text test</italic>", encoded);
-	}
+//	/**
+//	 *  Test interpreter italic text encoding.
+//	 */
+//	@Test
+//	public void testEncode() 
+//	{
+//		XWikiItalicTextInterpreterV21 interpreter = new XWikiItalicTextInterpreterV21();
+//		String content = "//italic text test//";
+//		String encoded = interpreter.encode(content);
+//		
+//		assertEquals("<italic>italic text test</italic>", encoded);
+//	}
 	
 	/**
 	 *  Test interpreter italic text decoding

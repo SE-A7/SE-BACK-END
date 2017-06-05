@@ -1,0 +1,20 @@
+<html>
+<div><h1>header 1</h1><p>This is a HTML p tag</p> 
+</div>
+</html>
+
+This is a normal paragraph, with some <bold>bold text</bold> in it.
+<bold>This is another paragraph, with only bold text in it</bold>
+
+<link name="label" wikiAlias="" target="_blank">My Page</link>
+
+<heading level="3"><bold>List of items</bold></heading>
+<bulletList depth="1">item 1</bulletList>
+<bulletList depth="1">item 2</bulletList>
+*<bulletList depth="1">item 2</bulletList>.1
+
+<html>
+<br/>
+</html>
+
+End text.

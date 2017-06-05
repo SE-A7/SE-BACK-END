@@ -3,6 +3,23 @@
 	<input language="xwiki" version="0.9" />
 	<output language="xwiki" version="2.1" />
 	<code>
-		<p></p>
+		<div>
+	<h1>header 1</h1>
+	<p>This is a HTML p tag</p> 
+</div>
+
+This is a normal paragraph, with some *bold text* in it.
+*This is another paragraph, with only bold text in it*
+
+[label>My Page>_blank]
+
+111 *List of items*
+* item 1
+* item 2
+** item 2.1
+
+<br/>
+
+End text.
 	</code>
 </translate>

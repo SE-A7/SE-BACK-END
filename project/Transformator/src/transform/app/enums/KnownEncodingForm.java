@@ -23,7 +23,7 @@ public enum KnownEncodingForm
 	UPPERCASE_ROMAN_LIST_ENCODING_FORM			("<romanUpList>#TEXT#</romanUpList>"),
 	
 	MIXED_LIST_ENCODING_FORM					("<mixedList depth=\"#LEVEL#\">#TEXT#</mixedList>"),
-	NUMBERED_LIST_ENCODING_FORM					("<numberList depth=\"#LEVEL\">#TEXT#</numberList>"),
+	NUMBERED_LIST_ENCODING_FORM					("<numberList depth=\"#LEVEL#\">#TEXT#</numberList>"),
 	SQUARE_LIST_ENCODING_FORM					("<squareList>#TEXT#</squareList>"),
 	
 	// Text
@@ -36,7 +36,7 @@ public enum KnownEncodingForm
 	// Other
 	HORIZONTAL_LINE_ENCODING_FORM	("<horizontalLine>"),
 	LINE_BREAK_ENCODING_FORM		("<newline>"),
-	LINK_ENCODING_FORM				("<link name=\"#NAME\" wikiAlias=\"#ALIAS#\" target=\"#TARGET\">#TEXT#</link>"),
+	LINK_ENCODING_FORM				("<link name=\"#NAME#\" wikiAlias=\"#ALIAS#\" target=\"#TARGET#\">#TEXT#</link>"),
 	
 	// HTML
 	HTML_ENCODING_FORM		("<html>" + System.lineSeparator() + "#TEXT#" + System.lineSeparator() + "</html>"),

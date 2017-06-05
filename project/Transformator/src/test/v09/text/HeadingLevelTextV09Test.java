@@ -30,7 +30,7 @@ public class HeadingLevelTextV09Test
 		String content = "1 this is a heading level 1 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"1\"> this is a heading level 1 text</heading> ", encoded);
+		assertEquals("<heading level=\"1\">this is a heading level 1 text</heading>", encoded);
 	}
 	
 	public void testEncode_2()
@@ -40,7 +40,7 @@ public class HeadingLevelTextV09Test
 		String content = "1.1 this is a heading level 2 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"2\"> this is a heading level 2 text</heading> ", encoded);
+		assertEquals("<heading level=\"2\">this is a heading level 2 text</heading>", encoded);
 	}
 
 	public void testEncode_3()
@@ -50,7 +50,7 @@ public class HeadingLevelTextV09Test
 		String content = "1.1.1 this is a heading level 3 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"3\"> this is a heading level 3 text</heading> ", encoded);
+		assertEquals("<heading level=\"3\">this is a heading level 3 text</heading>", encoded);
 	}
 
 	public void testEncode_4()
@@ -60,7 +60,7 @@ public class HeadingLevelTextV09Test
 		String content = "1.1.1.1 this is a heading level 4 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"4\"> this is a heading level 4 text</heading> ", encoded);
+		assertEquals("<heading level=\"4\">this is a heading level 4 text</heading>", encoded);
 	}
 
 	public void testEncode_5()
@@ -70,7 +70,7 @@ public class HeadingLevelTextV09Test
 		String content = "1.1.1.1.1 this is a heading level 5 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"5\"> this is a heading level 5 text</heading> ", encoded);
+		assertEquals("<heading level=\"5\">this is a heading level 5 text</heading>", encoded);
 	}
 	
 	public void testEncode_6()
@@ -80,7 +80,7 @@ public class HeadingLevelTextV09Test
 		String content = "1.1.1.1.1.1 this is a heading level 6 text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<heading level=\"6\"> this is a heading level 6 text</heading> ", encoded);
+		assertEquals("<heading level=\"6\">this is a heading level 6 text</heading>", encoded);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 1
-		String content = "<heading level=\"1\"> this is a heading level 1 text</heading> ";
+		String content = "<heading level=\"1\">this is a heading level 1 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1 this is a heading level 1 text", decoded);
@@ -112,7 +112,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 2
-		String content = "<heading level=\"2\"> this is a heading level 2 text</heading> ";
+		String content = "<heading level=\"2\">this is a heading level 2 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1.1 this is a heading level 2 text", decoded);
@@ -122,7 +122,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 3
-		String content = "<heading level=\"3\"> this is a heading level 3 text</heading> ";
+		String content = "<heading level=\"3\">this is a heading level 3 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1.1.1 this is a heading level 3 text", decoded);
@@ -132,7 +132,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 4
-		String content = "<heading level=\"4\"> this is a heading level 4 text</heading> ";
+		String content = "<heading level=\"4\">this is a heading level 4 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1.1.1.1 this is a heading level 4 text", decoded);
@@ -143,7 +143,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 5
-		String content = "<heading level=\"5\"> this is a heading level 5 text</heading> ";
+		String content = "<heading level=\"5\">this is a heading level 5 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1.1.1.1.1 this is a heading level 5 text", decoded);
@@ -153,7 +153,7 @@ public class HeadingLevelTextV09Test
 	{
 		XWikiHeadingInterpreterV09 interpreter = new XWikiHeadingInterpreterV09();
 		//level 6
-		String content = "<heading level=\"6\"> this is a heading level 6 text</heading> ";
+		String content = "<heading level=\"6\">this is a heading level 6 text</heading>";
 		String decoded = interpreter.decode(content);
 		
 		assertEquals("1.1.1.1.1.1 this is a heading level 6 text", decoded);

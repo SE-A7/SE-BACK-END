@@ -8,22 +8,22 @@ package transform.app.impl.interpreter.xwiki.v09.enums;
 public enum KnownEncodingPatterns 
 {
 	// Lists
-	BULLETED_LIST_PATTERN		("^(\\*+)([\\p{Graph}\\p{Space}]*?)$"),
-	HEBREW_LIST_PATTERN			("^j.([\\p{Graph}\\p{Space}]*?)$"),
-	HIRAGANA_IROAH_LIST_PATTERN	("^H.([\\p{Graph}\\p{Space}]*?)$"),
-	HIRAGANA_LIST_PATTERN		("^h.([\\p{Graph}\\p{Space}]*?)$"),
-	KATAKANA_IROHA_LIST_PATTERN	("^K.([\\p{Graph}\\p{Space}]*?)$"),
-	KATAKANA_LIST_PATTERN		("^k.([\\p{Graph}\\p{Space}]*?)$"),
+	BULLETED_LIST_PATTERN		("^(\\*+) ([\\p{Graph}\\p{Space}]*?)$"),
+	HEBREW_LIST_PATTERN			("^j. ([\\p{Graph}\\p{Space}]*?)$"),
+	HIRAGANA_IROAH_LIST_PATTERN	("^H. ([\\p{Graph}\\p{Space}]*?)$"),
+	HIRAGANA_LIST_PATTERN		("^h. ([\\p{Graph}\\p{Space}]*?)$"),
+	KATAKANA_IROHA_LIST_PATTERN	("^K. ([\\p{Graph}\\p{Space}]*?)$"),
+	KATAKANA_LIST_PATTERN		("^k. ([\\p{Graph}\\p{Space}]*?)$"),
 	
-	LOWERCASE_ALPHABETICAL_LIST_INTERPRETER_PATTERN	("^a.([\\p{Graph}\\p{Space}]*?)$"),
-	LOWERCASE_GREEK_LIST_INTERPRETER_PATTERN		("^g.([\\p{Graph}\\p{Space}]*?)$"),
-	LOWERCASE_ROMAN_LIST_INTERPRETER_PATTERN		("^i.([\\p{Graph}\\p{Space}]*?)$"),
-	MIXED_LIST_PATTERN								("^1(\\*?)\\.([\\p{Graph}\\p{Space}]*?)$"),
-	NUMBERED_LIST_PATTERN							("^(1+\\.)([\\p{Graph}\\p{Space}]*?)$"),
-	SQUARE_LIST_PATTERN								("^-([\\p{Graph}\\p{Space}]*?)$"),
-	UPPERCASE_ALPHABETICAL_LIST_INTERPRETER_PATTERN	("^A.([\\p{Graph}\\p{Space}]*?)$"),
-	UPPERCASE_GREEK_LIST_INTERPRETER_PATTERN		("^G.([\\p{Graph}\\p{Space}]*?)$"),
-	UPPERCASE_ROMAN_LIST_INTERPRETER_PATTERN		("^I.([\\p{Graph}\\p{Space}]*?)$"),
+	LOWERCASE_ALPHABETICAL_LIST_INTERPRETER_PATTERN	("^a. ([\\p{Graph}\\p{Space}]*?)$"),
+	LOWERCASE_GREEK_LIST_INTERPRETER_PATTERN		("^g. ([\\p{Graph}\\p{Space}]*?)$"),
+	LOWERCASE_ROMAN_LIST_INTERPRETER_PATTERN		("^i. ([\\p{Graph}\\p{Space}]*?)$"),
+	MIXED_LIST_PATTERN								("^1(\\*?)\\. ([\\p{Graph}\\p{Space}]*?)$"),
+	NUMBERED_LIST_PATTERN							("^(1+\\.) ([\\p{Graph}\\p{Space}]*?)$"),
+	SQUARE_LIST_PATTERN								("^- ([\\p{Graph}\\p{Space}]*?)$"),
+	UPPERCASE_ALPHABETICAL_LIST_INTERPRETER_PATTERN	("^A. ([\\p{Graph}\\p{Space}]*?)$"),
+	UPPERCASE_GREEK_LIST_INTERPRETER_PATTERN		("^G. ([\\p{Graph}\\p{Space}]*?)$"),
+	UPPERCASE_ROMAN_LIST_INTERPRETER_PATTERN		("^I. ([\\p{Graph}\\p{Space}]*?)$"),
 	
 	
 	// Text

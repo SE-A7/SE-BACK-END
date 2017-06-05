@@ -45,7 +45,7 @@ public class BoldTextV09Test
 		String content = "**";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<bold></bold>", encoded);
+		assertFalse(encoded.equals("<bold></bold>"));
 	}
 
 	public void testEncode_4() 
@@ -103,6 +103,6 @@ public class BoldTextV09Test
 		String content = "<bold>text";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("*text", decoded);
+		assertFalse(decoded.equals("*text"));
 	}
 }

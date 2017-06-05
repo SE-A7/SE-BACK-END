@@ -16,10 +16,13 @@ public class MixedListV21Test
 	public void testEncode() 
 	{
 		XWikiMixedListInterpreterV21 interpreter = new XWikiMixedListInterpreterV21();
-		String content = "1. this is a mixed list depth text";
+		String content = "1. this is item 1" + System.lineSeparator() + "1*. this is item 2" + System.lineSeparator() + "1*. this is item 3" + System.lineSeparator() + "1. this is item 4";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<mixedList depth=\"1\">this is a mixed list depth text</mixedList> ", encoded);
+		assertEquals("<mixedList depth=\"1\">this is item 1</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"2\">this is item 2</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"2\">this is item 3</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"1\">this is item 4</mixedList>", encoded);
 	}
 	
 	/**
@@ -29,10 +32,13 @@ public class MixedListV21Test
 	public void testDecode()
 	{
 		XWikiMixedListInterpreterV21 interpreter = new XWikiMixedListInterpreterV21();
-		String content = "<mixedList depth=\"1\">this is a mixed list depth text</mixedList> ";
-		String decoded = interpreter.decode(content);
-		
-		assertEquals("1. this is a mixed list depth text", decoded);
+		String content = "<mixedList depth=\"1\">this is item 1</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"2\">this is item 2</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"2\">this is item 3</mixedList>" + System.lineSeparator() + 
+				"<mixedList depth=\"1\">this is item 4</mixedList>";
+String decoded = interpreter.decode(content);
+
+assertEquals("1. this is item 1" + System.lineSeparator() + "1*. this is item 2" + System.lineSeparator() + "1*. this is item 3" + System.lineSeparator() + "1. this is item 4", decoded);
 	}
 
 }

@@ -1,1 +1,16 @@
- 
+<div>
+	<h1>header 1</h1>
+	<p>This is a HTML p tag</p> 
+</div>
+
+This is a normal paragraph, with some *bold text* in it.
+*This is another paragraph, with only bold text in it*
+
+111 *List of items*
+* item 1
+* item 2
+** item 2.1
+
+<br/>
+
+End text.

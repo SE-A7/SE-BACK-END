@@ -16,10 +16,13 @@ public class NumberListTextV09Test
 	public void testEncode() 
 	{
 		XWikiNumberedListInterpreterV09 interpreter = new XWikiNumberedListInterpreterV09();
-		String content = "1. this is a number list depth text";
+		String content = "1. this is item 1" + System.lineSeparator() + "11. this is item 2" + System.lineSeparator() + "1. this is item 3" + System.lineSeparator() + "111. this is item 4";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<numberList depth=\"1\">this is a number list depth text</numberList>", encoded);
+		assertEquals("<numberList depth=\"1\">this is item 1</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"2\">this is item 2</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"1\">this is item 3</numberList>" + System.lineSeparator() + 
+				"<numberList depth=\"3\">this is item 4</numberList>", encoded);
 	}
 	
 	/**
@@ -29,10 +32,13 @@ public class NumberListTextV09Test
 	public void testDecode()
 	{
 		XWikiNumberedListInterpreterV09 interpreter = new XWikiNumberedListInterpreterV09();
-		String content = "<numberList depth=\"1\">this is a number list depth text</numberList>";
+		String content = "<numberList depth=\"1\">this is item 1</numberList>" + System.lineSeparator() + 
+						"<numberList depth=\"2\">this is item 2</numberList>" + System.lineSeparator() + 
+						"<numberList depth=\"1\">this is item 3</numberList>" + System.lineSeparator() + 
+						"<numberList depth=\"3\">this is item 4</numberList>";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("1. this is a number list depth text", decoded);
+		assertEquals("1. this is item 1" + System.lineSeparator() + "11. this is item 2" + System.lineSeparator() + "1. this is item 3" + System.lineSeparator() + "111. this is item 4", decoded);
 	}
 
 }

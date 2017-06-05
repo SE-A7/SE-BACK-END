@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import transform.app.impl.interpreter.xwiki.v21.list.XWikiBulletedListInterpreterV21;
+import transform.app.impl.interpreter.xwiki.v21.list.XWikiBulletListInterpreterV21;
 
 public class BulletListV21Test
 {
@@ -15,7 +15,7 @@ public class BulletListV21Test
     @Test
     public void testEncode()
     {
-        XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+        XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content =
                 "* list item 1" + System.lineSeparator() + 
                 "* list item 2";
@@ -33,7 +33,7 @@ public class BulletListV21Test
     @Test
     public void testEncodeEmptyString()
     {
-    	XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+    	XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content = "";
         String encoded = interpreter.encode(content);
 
@@ -46,7 +46,7 @@ public class BulletListV21Test
     @Test
     public void testEncodeEmptyTag()
     {
-    	XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+    	XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content = "*";
         String encoded = interpreter.encode(content);
 
@@ -60,7 +60,7 @@ public class BulletListV21Test
     @Test
     public void testDecode()
     {
-    	XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+    	XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content =
                 "<bulletList depth=\"1\">list item 1</bulletList>" + 
                 System.lineSeparator() + 
@@ -78,7 +78,7 @@ public class BulletListV21Test
     @Test
     public void testDecodeEmptyString()
     {
-    	XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+    	XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content = "";
         String decoded = interpreter.decode(content);
 
@@ -91,7 +91,7 @@ public class BulletListV21Test
     @Test
     public void testDecodeEmptyTag()
     {
-    	XWikiBulletedListInterpreterV21 interpreter = new XWikiBulletedListInterpreterV21();
+    	XWikiBulletListInterpreterV21 interpreter = new XWikiBulletListInterpreterV21();
         String content =
                 "<bulletList depth=\"1\"></bulletList>";
         String decoded = interpreter.decode(content);

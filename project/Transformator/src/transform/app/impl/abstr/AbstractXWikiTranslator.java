@@ -26,7 +26,7 @@ public abstract class AbstractXWikiTranslator extends AbstractTranslator
 		log.info("Translation into application language started...");
 		
 		interpreterFactory.encode(content);
-		log.info("Translation ended.");	
+		log.info("Translation into application language ended.");	
 	}
 	
 	@Override
@@ -34,6 +34,6 @@ public abstract class AbstractXWikiTranslator extends AbstractTranslator
 	{
 		log.info("Translation from application language started...");
 		interpreterFactory.decode();
-		log.info("Translation ended.");
+		log.info("Translation from application language ended.");
 	}
 }

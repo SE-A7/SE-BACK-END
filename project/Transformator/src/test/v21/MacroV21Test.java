@@ -3,7 +3,7 @@ package test.v21;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import transform.app.impl.interpreter.xwiki.v21.XWikiScriptInterpreterV21;
+import transform.app.impl.interpreter.xwiki.v21.XWikiMacroInterpreterV21;
 
 public class MacroV21Test 
 {
@@ -17,7 +17,7 @@ public class MacroV21Test
 	
 	private void testDecode_RadeoxMacro() 
 	{
-		XWikiScriptInterpreterV21 intepreter = new XWikiScriptInterpreterV21();
+		XWikiMacroInterpreterV21 intepreter = new XWikiMacroInterpreterV21();
 		String content = "<macro>" + System.lineSeparator() + "{code:java}"+ System.lineSeparator() +
 				"System.out.println(\"Hello World\")"+ System.lineSeparator() + 
 				"{code}" + System.lineSeparator() + "</macro>";
@@ -32,7 +32,7 @@ public class MacroV21Test
 
 	private void testDecode_VelocityMacro() 
 	{
-		XWikiScriptInterpreterV21 intepreter = new XWikiScriptInterpreterV21();
+		XWikiMacroInterpreterV21 intepreter = new XWikiMacroInterpreterV21();
 		String content = "<macro>" + System.lineSeparator() + "#info(\"Some text\")" + System.lineSeparator() + "</macro>";
 		
 		String decoded = intepreter.decode(content);

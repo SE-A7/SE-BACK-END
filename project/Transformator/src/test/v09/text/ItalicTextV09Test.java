@@ -16,10 +16,10 @@ public class ItalicTextV09Test
 	public void testEncode() 
 	{
 		XWikiItalicTextInterpreterV09 interpreter = new XWikiItalicTextInterpreterV09();
-		String content = "~~this is a italic text~~";
+		String content = "Not italic, but ~~this is a italic text~~";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<italic>this is a italic text</italic>", encoded);
+		assertEquals("Not italic, but <italic>this is a italic text</italic>", encoded);
 	}
 	
 	/**
@@ -29,10 +29,10 @@ public class ItalicTextV09Test
 	public void testDecode()
 	{
 		XWikiItalicTextInterpreterV09 interpreter = new XWikiItalicTextInterpreterV09();
-		String content = "<italic>this is a italic text</italic>";
+		String content = "Not italic, but <italic>this is a italic text</italic>";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("~~this is a italic text~~", decoded);
+		assertEquals("Not italic, but ~~this is a italic text~~", decoded);
 	}
 
 }

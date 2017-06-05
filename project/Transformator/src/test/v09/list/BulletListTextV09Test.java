@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import transform.app.impl.interpreter.xwiki.v09.list.XWikiBulletedListInterpreterV09;
+import transform.app.impl.interpreter.xwiki.v09.list.XWikiBulletListInterpreterV09;
 
 public class BulletListTextV09Test 
 {
@@ -15,11 +15,13 @@ public class BulletListTextV09Test
 	@Test
 	public void testEncode() 
 	{
-		XWikiBulletedListInterpreterV09 interpreter = new XWikiBulletedListInterpreterV09();
-		String content = "** this is a bullet list depth text";
+		XWikiBulletListInterpreterV09 interpreter = new XWikiBulletListInterpreterV09();
+		String content = "* This is item 1" + System.lineSeparator() + "* This is item 2*" + System.lineSeparator() + "** this is a bullet list depth text";
 		String encoded = interpreter.encode(content);
 		
-		assertEquals("<bulletList depth=\"2\">this is a bullet list depth text</bulletList>", encoded);
+		assertEquals("<bulletList depth=\"1\">This is item 1</bulletList>" + System.lineSeparator() + 
+				"<bulletList depth=\"1\">This is item 2*</bulletList>" + System.lineSeparator() +
+				"<bulletList depth=\"2\">this is a bullet list depth text</bulletList>", encoded);
 	}
 	
 	/**
@@ -28,11 +30,13 @@ public class BulletListTextV09Test
 	@Test
 	public void testDecode()
 	{
-		XWikiBulletedListInterpreterV09 interpreter = new XWikiBulletedListInterpreterV09();
-		String content = "<bulletList depth=\"2\">this is a bullet list depth text</bulletList>";
+		XWikiBulletListInterpreterV09 interpreter = new XWikiBulletListInterpreterV09();
+		String content = "<bulletList depth=\"1\">This is item 1</bulletList>" + System.lineSeparator() + 
+						"<bulletList depth=\"1\">This is item 2*</bulletList>" + System.lineSeparator() +
+						"<bulletList depth=\"2\">this is a bullet list depth text</bulletList>";
 		String decoded = interpreter.decode(content);
 		
-		assertEquals("** this is a bullet list depth text", decoded);
+		assertEquals("* This is item 1" + System.lineSeparator() + "* This is item 2*" + System.lineSeparator() + "** this is a bullet list depth text", decoded);
 	}
 
 }

@@ -30,7 +30,7 @@
 	<!-- List mappings -->
 	<Mapping>
 		<Encoding>bulletList</Encoding>
-		<Interpreter>transform.app.impl.interpreter.xwiki.v21.list.XWikiBulletedListInterpreterV21</Interpreter>
+		<Interpreter>transform.app.impl.interpreter.xwiki.v21.list.XWikiBulletListInterpreterV21</Interpreter>
 		<priority>60</priority>
 	</Mapping>
 	<Mapping>
